@@ -11,6 +11,19 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    //These boolean values will be used to help identify if application
+    //can confirm Registration
+    boolean FNE_confirm_submission;
+    boolean LNE_confirm_submission;
+    boolean PHE_confirm_submission;
+
+    //Create EditText Variables for Verification
+    EditText FirstName = (EditText) findViewById(R.id.et_FName);
+    EditText LastName = (EditText) findViewById(R.id.et_LName);
+    EditText PhoneNumber = (EditText) findViewById(R.id.et_PhNumber);
+
+    //
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,23 +36,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Method called when 'View Queue' Button is pressed
-    protected void customer_ConfirmReg(View c) {
-
-        //These boolean values will be used to help identify if application
-        //can confirm Registration
-        boolean FNE_confirm_submission;
-        boolean LNE_confirm_submission;
-        boolean PHE_confirm_submission;
-
-        //Create EditText Variables for Verification
-        EditText FirstName = (EditText) findViewById(R.id.et_FName);
-        EditText LastName = (EditText) findViewById(R.id.et_LName);
-        EditText PhoneNumber = (EditText) findViewById(R.id.et_PhNumber);
-
-
-        //Create ArrayList for Customers
-        ArrayList<Customer> CustomerList = new ArrayList<>();
-
+    protected void customer_ConfirmReg() {
 
         //Conditions for verifying if registration
         //elements are empty or not
@@ -70,37 +67,30 @@ public class MainActivity extends AppCompatActivity {
                 PHE_confirm_submission;
 
         //Final Verification boolean to verify
-        //if submission is fully completed
+        //if submission is fully ompleted
         if (final_confirm_submission == false) {
         }
         else {
+            //Complete submission code
 
-            //Convert User input to String
-            String firstname = FirstName.getText().toString();
-            String lastname = LastName.getText().toString();
-            String phonenumber = PhoneNumber.getText().toString();
-
-            //Add customer to the ArrayList: CustomerList
-            Customer customer = new Customer(firstname, lastname, phonenumber);
-            CustomerList.add(customer);
-            Toast.makeText(this, "Submission Complete", Toast.LENGTH_SHORT).show();
         }
     }
 
     protected void ClearFields(){
         //Delete Text Fields to null
         //when Clear button is pressed
-        EditText FirstName = (EditText) findViewById(R.id.et_FName);
-        EditText LastName = (EditText) findViewById(R.id.et_LName);
-        EditText PhoneNumber = (EditText) findViewById(R.id.et_PhNumber);
+        FirstName = (EditText) findViewById(R.id.et_FName);
+        LastName = (EditText) findViewById(R.id.et_LName);
+        PhoneNumber = (EditText) findViewById(R.id.et_PhNumber);
 
         //Setting Values back to null - Removing previous entries
         FirstName.setText("");
         LastName.setText("");
         PhoneNumber.setText("");
+
     }
-
-    protected void customerView(){
-
+    //Method to go from ViewQueue to Main Menu
+    protected void btn_Back(){
+        setContentView(R.layout.activity_main);
     }
 }
