@@ -1,0 +1,128 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.yuri_khechoyan.queued.MainActivity">
+
+    <TextView
+        android:id="@+id/tv_FName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="First Name:"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.054"
+        app:layout_constraintHorizontal_bias="0.101"
+        android:layout_marginTop="94dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/tv_LName" />
+
+    <EditText
+        android:id="@+id/et_FName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="180dp"
+        tools:layout_editor_absoluteY="27dp"
+        android:layout_alignBaseline="@+id/tv_FName"
+        android:layout_alignBottom="@+id/tv_FName"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/tv_FName" />
+
+    <TextView
+        android:id="@+id/tv_LName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last Name:"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.211"
+        app:layout_constraintHorizontal_bias="0.103"
+        android:layout_marginTop="66dp"
+        android:layout_marginStart="39dp"
+        android:layout_below="@+id/tv_FName"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/et_LName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="180dp"
+        tools:layout_editor_absoluteY="103dp"
+        android:layout_alignBaseline="@+id/tv_LName"
+        android:layout_alignBottom="@+id/tv_LName"
+        android:layout_toEndOf="@+id/tv_LName"
+        android:layout_marginStart="10dp" />
+
+
+    <TextView
+        android:id="@+id/tv_PNum_Details"
+        android:layout_width="294dp"
+        android:layout_height="47dp"
+        android:text="(Enter your 10-digit number)"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.359"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+
+    <TextView
+        android:id="@+id/tv_PhNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv_PNum_Details"
+        android:layout_below="@+id/tv_PNum_Details"
+        android:text="Phone Number:"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.478" />
+
+    <EditText
+        android:id="@+id/et_PhNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_PhNumber"
+        android:layout_alignBottom="@+id/tv_PhNumber"
+        android:layout_toEndOf="@+id/tv_PhNumber"
+        android:hint="0123456789"
+        tools:layout_editor_absoluteX="180dp"
+        tools:layout_editor_absoluteY="222dp" />
+
+    <Button
+        android:id="@+id/btn_RegConfirm"
+        android:text="Confirm Registration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="367dp"
+        tools:layout_editor_absoluteX="104dp"
+        android:onClick="customer_ConfirmReg"
+        android:layout_alignBaseline="@+id/btn_ClearFields"
+        android:layout_alignBottom="@+id/btn_ClearFields"
+        android:layout_alignStart="@+id/et_PhNumber" />
+
+    <Button
+        android:id="@+id/btn_ClearFields"
+        android:text="Clear Fields"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:onClick="ClearFields"/>
+
+</RelativeLayout>
