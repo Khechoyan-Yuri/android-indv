@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 PHE_confirm_submission;
 
         //Final Verification boolean to verify
-        //if submission is fully ompleted
+        //if submission is fully completed
         if (final_confirm_submission == false) {
         }
         else {
@@ -98,5 +98,9 @@ public class MainActivity extends AppCompatActivity {
         FirstName.setText("");
         LastName.setText("");
         PhoneNumber.setText("");
+    }
+
+    protected void customerView(){
+
     }
 }
