@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.yuri_khechoyan.queued.MainActivity">
 
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -28,8 +27,8 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_below="@+id/textView"
-        android:layout_marginBottom="60dp">
-
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/btn_DeleteCustomer">
     </ListView>
 
     <Button
@@ -37,15 +36,17 @@
         android:text="Delete Customer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginRight="5dp"/>
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="36dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back"
-        android:onClick="btn_Back"/>
-
-
+        android:onClick="btn_Back"
+        android:layout_marginStart="29dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

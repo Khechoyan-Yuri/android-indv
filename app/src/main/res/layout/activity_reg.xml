@@ -60,7 +60,6 @@
         android:layout_toEndOf="@+id/tv_LName"
         android:layout_marginStart="10dp" />
 
-
     <TextView
         android:id="@+id/tv_PNum_Details"
         android:layout_width="294dp"
@@ -74,7 +73,6 @@
         app:layout_constraintVertical_bias="0.359"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
-
 
     <TextView
         android:id="@+id/tv_PhNumber"
@@ -109,20 +107,19 @@
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteY="367dp"
         tools:layout_editor_absoluteX="104dp"
-        android:onClick="customer_ConfirmReg"
         android:layout_alignBaseline="@+id/btn_ClearFields"
         android:layout_alignBottom="@+id/btn_ClearFields"
-        android:layout_alignStart="@+id/et_PhNumber" />
+        android:layout_alignStart="@+id/et_PhNumber"
+        android:onClick="customer_ConfirmReg"/>
 
     <Button
         android:id="@+id/btn_ClearFields"
-        android:text="Clear Fields"
+        android:text="Clear/Cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="10dp"
-        android:onClick="ClearFields"/>
-
+        android:onClick="Clear_Cancel"/>
 </RelativeLayout>

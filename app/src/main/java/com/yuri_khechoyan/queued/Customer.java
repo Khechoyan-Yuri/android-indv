@@ -1,10 +1,10 @@
 package com.yuri_khechoyan.queued;
-
 /**
  * Created by Yuri Khechoyan on 3/23/2017.
  */
 
 public class Customer {
+
     //Variables
     String firstname;
     String lastname;
@@ -12,6 +12,7 @@ public class Customer {
     int place;
 
     public Customer(){
+
         //DEFAULT CONSTRUCTOR
         firstname = "unknown";
         lastname = "unknown";
@@ -20,31 +21,36 @@ public class Customer {
     }
 
     protected Customer(String name,String last_name, String MobileNumber){
+
         //constructor for the customer
         firstname = name;
         lastname = last_name;
         mobileNumber = MobileNumber;
-
     }
 
 //SETTERS AND GETTERS
-
     public void SetName(String name){
         firstname = name;
     }
+
     public void SetLastName(String last_name){
         lastname = last_name;
     }
+
     public void SetNumber(String MobileNumber){
         mobileNumber = MobileNumber;
     }
+
     public String GetName(){
         return firstname;
     }
+
     public String GetLastName(){
         return lastname;
     }
+
     public String GetNumber(){
         return mobileNumber;
+
     }
 }

@@ -7,9 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     //Initialize ArrayAdapter Object
     ArrayAdapter<String> adapter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,13 +38,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Method called when "Register' Button is pressed
-    protected void customerReg(View r){
+    protected void customerReg(View r1){
         setContentView(R.layout.activity_reg);
     }
 
     //Method called when 'Confirm Registration' Button is pressed
     protected void customer_ConfirmReg() {
-
         //Connect ListView object to a layout element
         lv = (ListView) findViewById(R.id.listView);
 
@@ -61,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         //Assigns ListView to adapter Class
         lv.setAdapter(adapter);
 
- //--------------------------------------------------------------------------
+        //--------------------------------------------------------------------------
 
         //Conditions for verifying if registration
         //elements are empty or not
@@ -69,21 +65,24 @@ public class MainActivity extends AppCompatActivity {
         if (FirstName.equals("")) {
             Toast.makeText(this, "First Name were not Entered", Toast.LENGTH_SHORT).show();
             FNE_confirm_submission = false;
-        } else {
+        }
+        else {
             FNE_confirm_submission = true;
         }
 
         if (LastName.equals("")) {
             Toast.makeText(this, "Last Name were not Entered", Toast.LENGTH_SHORT).show();
             LNE_confirm_submission = false;
-        } else {
+        }
+        else {
             LNE_confirm_submission = true;
         }
 
         if (PhoneNumber.equals("")) {
             Toast.makeText(this, "Phone were not Entered", Toast.LENGTH_SHORT).show();
             PHE_confirm_submission = false;
-        } else {
+        }
+        else {
             PHE_confirm_submission = true;
         }
 
@@ -100,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             //
         }
     }
-
+//Add customer info to the List and [add code] that sends a text to user
     protected void addInfo(){
         //Convert EditText Variables to String
         String str_FN = FirstName.getText().toString();
@@ -113,36 +112,54 @@ public class MainActivity extends AppCompatActivity {
 
         //Have adapter update with newly made changes
         adapter.notifyDataSetChanged();
+
+        //***ADD TWILIO CODE***
+
+
     }
 
-    protected void ClearFields(){
+    //Method for clearing all EditText Fields from activity_reg and go back to the Main Menu screen
+    protected void Clear_Cancel(View v){
+        //Route Application back to Main Menu
+        setContentView(R.layout.activity_main);
+
         //Delete Text Fields to null
         //when Clear button is pressed
         FirstName = (EditText) findViewById(R.id.et_FName);
         LastName = (EditText) findViewById(R.id.et_LName);
         PhoneNumber = (EditText) findViewById(R.id.et_PhNumber);
 
-        //Setting Values back to null - Removing previous entries
-        FirstName.setText("");
-        LastName.setText("");
-        PhoneNumber.setText("");
+        //Convert EditText Fields to Strings
+        String str_FN = FirstName.getText().toString();
+        String str_LN = LastName.getText().toString();
+        String str_PHN = PhoneNumber.getText().toString();
+
+        if(str_FN != "" || str_LN != "" || str_PHN != ""){
+
+            //Setting Values back to null - Removing any un-removed, previous entries
+            FirstName.setText("");
+            LastName.setText("");
+            PhoneNumber.setText("");
+        }
+    }
+
+    //Method called when the 'View Queue' Button is pressed
+    protected void ViewQueue(View v2){
+        setContentView(R.layout.activity_list);
 
     }
 
     //Method to go from ViewQueue to Main Menu
-    protected void btn_Back(){
+    protected void btn_Back(View v3){
         setContentView(R.layout.activity_main);
     }
 }
 
 /*
-
 Installation failed with message Invalid File: D:\CIS\CIS 472 - Android Dev\HWs\HW-Individual\Queued
 \app\build\intermediates\split-apk\debug\slices\slice_3.apk.
-
         It is possible that this issue is resolved by uninstalling an existing version of the apk
         if it is present, and then re-installing.
         WARNING: Uninstalling will remove the application data!
         Do you want to uninstall the existing application?
-
 */
