@@ -155,9 +155,6 @@ public class RegActivity extends MainActivity{
         //Adds info (FN & LN to ListView
         CustomerList.add(str_FN+" "+str_LN);
 
-        //Have adapter update with newly made changes
-        adapter.notifyDataSetChanged();
-
         Toast.makeText(this, "Registration Complete!", Toast.LENGTH_SHORT).show();
 
         //***ADD TWILIO CODE***

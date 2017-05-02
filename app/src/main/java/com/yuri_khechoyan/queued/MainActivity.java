@@ -22,6 +22,10 @@ import static com.yuri_khechoyan.queued.R.layout.activity_reg;
 //-Save Info from Registration to QueueActivity
 //-Send text out for Registration Confirmation (to users' phone)
 
+    //--Tian's suggestions
+    //UseSQLite in combo with adapter to add people to list
+    //Have the SQLite DB update every time 'View Queue' Button is pressed
+
 
 // --- FIXED ---
 // Error - NullPointerException: at com.yuri_khechoyan.queued.MainActivity.<init>(MainActivity.java:38)

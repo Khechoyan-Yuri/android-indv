@@ -50,6 +50,9 @@ public class QueueActivity extends MainActivity{
 
 
     protected void UpdateList(){
+        //Have adapter update with newly made changes
+        adapter.notifyDataSetChanged();
+
         //Assigns ListView to adapter Class
         lv.setAdapter(adapter);
     }
