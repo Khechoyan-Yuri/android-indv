@@ -12,11 +12,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".RegActivity"
+            android:label="qu·eu·ed - Register">
+            <intent-filter>
+                <action android:name="com.yuri_khechoyan.queued.RegActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".QueueActivity"
+            android:label="qu·eu·ed - View Queue">
+            <intent-filter>
+                <action android:name="com.yuri_khechoyan.queued.QueueActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 </manifest>

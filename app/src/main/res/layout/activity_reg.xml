@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yuri_khechoyan.queued.MainActivity">
+    tools:context="com.yuri_khechoyan.queued.RegActivity">
 
     <TextView
         android:id="@+id/tv_FName"
@@ -101,6 +101,17 @@
         tools:layout_editor_absoluteY="222dp" />
 
     <Button
+        android:id="@+id/btn_ClearFields"
+        android:text="Clear/Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:onClick="ClearCancel"/>
+
+    <Button
         android:id="@+id/btn_RegConfirm"
         android:text="Confirm Registration"
         android:layout_width="wrap_content"
@@ -112,14 +123,4 @@
         android:layout_alignStart="@+id/et_PhNumber"
         android:onClick="customer_ConfirmReg"/>
 
-    <Button
-        android:id="@+id/btn_ClearFields"
-        android:text="Clear/Cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="10dp"
-        android:onClick="Clear_Cancel"/>
 </RelativeLayout>

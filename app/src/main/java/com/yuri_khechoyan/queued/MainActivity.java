@@ -1,26 +1,43 @@
 package com.yuri_khechoyan.queued;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import java.util.ArrayList;
+
+
+//*********TO-DO LIST********************
+
+// Error - NullPointerException: at com.yuri_khechoyan.queued.MainActivity.<init>(MainActivity.java:36)
+
 
 public class MainActivity extends AppCompatActivity {
 
+    //Creates Register Button - MainActivity
+    Button btn_Register;
+
+    //Creates View Queue Button - MainActivity
+    Button btn_ViewQueue;
+    
+    //Button btn_Clear_Cancel;
+
     //These boolean values will be used to help identify if application
-    //can confirm Registration
+    //can confirm Registration=
     boolean FNE_confirm_submission;
     boolean LNE_confirm_submission;
     boolean PHE_confirm_submission;
 
     //Initialize EditText Variables
-    EditText FirstName;
-    EditText LastName;
-    EditText PhoneNumber;
+    EditText FirstName = (EditText) findViewById(R.id.et_FName);
+    EditText LastName = (EditText) findViewById(R.id.et_LName);
+    EditText PhoneNumber = (EditText) findViewById(R.id.et_PhNumber);
 
     //Initialize ListView object
     ListView lv;
@@ -31,80 +48,64 @@ public class MainActivity extends AppCompatActivity {
     //Initialize ArrayAdapter Object
     ArrayAdapter<String> adapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //New Customer Registration Method Call
+        customerReg();
+        //View Queue Method Call
+        ViewQueue();
+
+        //Retrieve btn_Back Method Call from QueueActivity Class - Call method in onCreate
+        QueueActivity VQ= new QueueActivity();
+        VQ.btn_Back();
+
+        //Retrieve learCancel Method Call from RegActivity Class - Call method in onCreate
+        RegActivity CC = new RegActivity();
+        CC.ClearCancel();
+
+        //Retrieve customer_ConfirmReg Method Call from RegActivity Class - Call method in onCreate
+        RegActivity CR = new RegActivity();
+        CR.customer_ConfirmReg();
+
+
+
+        //btn_Clear_Cancel = (Button) findViewById(R.id.btn_ClearFields);
     }
 
     //Method called when "Register' Button is pressed
-    protected void customerReg(View r1){
-        setContentView(R.layout.activity_reg);
+    protected void customerReg(){
+        //Assigns Register Button to xml element
+        btn_Register = (Button) findViewById(R.id.btn_register) ;
+
+        //Create Intent to launch the Registration Page (RegActivity)
+        Intent Register = new Intent ("com.yuri_khechoyan.queued.RegActivity");
+        startActivity(Register);
     }
 
-    //Method called when 'Confirm Registration' Button is pressed
-    protected void customer_ConfirmReg() {
-        //Connect ListView object to a layout element
-        lv = (ListView) findViewById(R.id.listView);
 
-        //Calls ArrayList Class
-        CustomerList = new ArrayList<String>();
+    //Method called when the 'View Queue' Button is pressed
+    protected void ViewQueue(){
+        //Assigns Register Button to xml element
+        btn_ViewQueue = (Button) findViewById(R.id.btn_View);
 
-        //Calls ArrayAdapter Class
-        adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1,
-                CustomerList);
-
-        //Assigns ListView to adapter Class
-        lv.setAdapter(adapter);
-
-        //--------------------------------------------------------------------------
-
-        //Conditions for verifying if registration
-        //elements are empty or not
-        //when Submit button is pressed
-        if (FirstName.equals("")) {
-            Toast.makeText(this, "First Name were not Entered", Toast.LENGTH_SHORT).show();
-            FNE_confirm_submission = false;
-        }
-        else {
-            FNE_confirm_submission = true;
-        }
-
-        if (LastName.equals("")) {
-            Toast.makeText(this, "Last Name were not Entered", Toast.LENGTH_SHORT).show();
-            LNE_confirm_submission = false;
-        }
-        else {
-            LNE_confirm_submission = true;
-        }
-
-        if (PhoneNumber.equals("")) {
-            Toast.makeText(this, "Phone were not Entered", Toast.LENGTH_SHORT).show();
-            PHE_confirm_submission = false;
-        }
-        else {
-            PHE_confirm_submission = true;
-        }
-
-        //Create OVERALL Verification Boolean
-        boolean final_confirm_submission = FNE_confirm_submission && LNE_confirm_submission &&
-                PHE_confirm_submission;
-
-        //Final Verification boolean to verify
-        //if submission is fully completed
-        if (final_confirm_submission == false) {
-        }
-        else {
-            addInfo();
-            //
-        }
+        //Create Intent to launch the Registration Page (RegActivity)
+        Intent View = new Intent ("com.yuri_khechoyan.queued.QueueActivity");
+        startActivity(View);
     }
-//Add customer info to the List and [add code] that sends a text to user
+
+
+    //Add customer info to the List and [add code] that sends a text to user
+
     protected void addInfo(){
         //Convert EditText Variables to String
         String str_FN = FirstName.getText().toString();
         String str_LN = LastName.getText().toString();
         String str_PHN = PhoneNumber.getText().toString();
+
 
         //Complete submission code
         //Adds info (FN & LN to ListView
@@ -116,42 +117,6 @@ public class MainActivity extends AppCompatActivity {
         //***ADD TWILIO CODE***
 
 
-    }
-
-    //Method for clearing all EditText Fields from activity_reg and go back to the Main Menu screen
-    protected void Clear_Cancel(View v){
-        //Route Application back to Main Menu
-        setContentView(R.layout.activity_main);
-
-        //Delete Text Fields to null
-        //when Clear button is pressed
-        FirstName = (EditText) findViewById(R.id.et_FName);
-        LastName = (EditText) findViewById(R.id.et_LName);
-        PhoneNumber = (EditText) findViewById(R.id.et_PhNumber);
-
-        //Convert EditText Fields to Strings
-        String str_FN = FirstName.getText().toString();
-        String str_LN = LastName.getText().toString();
-        String str_PHN = PhoneNumber.getText().toString();
-
-        if(str_FN != "" || str_LN != "" || str_PHN != ""){
-
-            //Setting Values back to null - Removing any un-removed, previous entries
-            FirstName.setText("");
-            LastName.setText("");
-            PhoneNumber.setText("");
-        }
-    }
-
-    //Method called when the 'View Queue' Button is pressed
-    protected void ViewQueue(View v2){
-        setContentView(R.layout.activity_list);
-
-    }
-
-    //Method to go from ViewQueue to Main Menu
-    protected void btn_Back(View v3){
-        setContentView(R.layout.activity_main);
     }
 }
 
