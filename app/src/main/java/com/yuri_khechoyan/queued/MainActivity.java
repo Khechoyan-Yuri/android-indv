@@ -15,8 +15,16 @@ import java.util.ArrayList;
 
 //*********TO-DO LIST********************
 
-// Error - NullPointerException: at com.yuri_khechoyan.queued.MainActivity.<init>(MainActivity.java:36)
+// ---NEEDS FIXING---
 
+// Error - NullPointerException: at com.yuri_khechoyan.queued.QueueActivity.btn_Back(QueueActivity.java:18)
+// Error - NullPointerException: at com.yuri_khechoyan.queued.MainActivity.onCreate(MainActivity.java:69)
+
+
+// --- FIXED ---
+// Error - NullPointerException: at com.yuri_khechoyan.queued.MainActivity.<init>(MainActivity.java:38)
+
+//(Solution =  move addInfo() method to RegActivity java file & move Initialized vars from MainActivity to RegActivity)
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Creates View Queue Button - MainActivity
     Button btn_ViewQueue;
-    
+
     //Button btn_Clear_Cancel;
 
     //These boolean values will be used to help identify if application
@@ -34,10 +42,7 @@ public class MainActivity extends AppCompatActivity {
     boolean LNE_confirm_submission;
     boolean PHE_confirm_submission;
 
-    //Initialize EditText Variables
-    EditText FirstName = (EditText) findViewById(R.id.et_FName);
-    EditText LastName = (EditText) findViewById(R.id.et_LName);
-    EditText PhoneNumber = (EditText) findViewById(R.id.et_PhNumber);
+
 
     //Initialize ListView object
     ListView lv;
@@ -60,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
         ViewQueue();
 
         //Retrieve btn_Back Method Call from QueueActivity Class - Call method in onCreate
-        QueueActivity VQ= new QueueActivity();
-        VQ.btn_Back();
+        QueueActivity VQ = new QueueActivity();
+        VQ.Back();
 
         //Retrieve learCancel Method Call from RegActivity Class - Call method in onCreate
         RegActivity CC = new RegActivity();
@@ -95,28 +100,6 @@ public class MainActivity extends AppCompatActivity {
         //Create Intent to launch the Registration Page (RegActivity)
         Intent View = new Intent ("com.yuri_khechoyan.queued.QueueActivity");
         startActivity(View);
-    }
-
-
-    //Add customer info to the List and [add code] that sends a text to user
-
-    protected void addInfo(){
-        //Convert EditText Variables to String
-        String str_FN = FirstName.getText().toString();
-        String str_LN = LastName.getText().toString();
-        String str_PHN = PhoneNumber.getText().toString();
-
-
-        //Complete submission code
-        //Adds info (FN & LN to ListView
-        CustomerList.add(str_FN+" "+str_LN);
-
-        //Have adapter update with newly made changes
-        adapter.notifyDataSetChanged();
-
-        //***ADD TWILIO CODE***
-
-
     }
 }
 

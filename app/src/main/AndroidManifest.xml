@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <!-- MainActivity -->
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +22,7 @@
             </intent-filter>
         </activity>
 
+        <!-- RegActivity -->
         <activity android:name=".RegActivity"
             android:label="qu·eu·ed - Register">
             <intent-filter>
@@ -30,6 +32,7 @@
             </intent-filter>
         </activity>
 
+        <!-- QueueActivity -->
         <activity android:name=".QueueActivity"
             android:label="qu·eu·ed - View Queue">
             <intent-filter>

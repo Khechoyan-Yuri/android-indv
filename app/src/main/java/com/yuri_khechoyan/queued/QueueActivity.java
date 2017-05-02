@@ -13,7 +13,7 @@ public class QueueActivity extends MainActivity{
     Button btn_BackToMain;
 
     //Method to go from ViewQueue to Main Menu
-    protected void btn_Back(){
+    protected void Back(){
         //Assigns Register Button to xml element
         btn_BackToMain = (Button) findViewById(R.id.btn_Back_Main);
 

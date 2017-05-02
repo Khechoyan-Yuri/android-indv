@@ -16,6 +16,11 @@ import java.util.ArrayList;
 
 public class RegActivity extends MainActivity{
 
+    //Initialize EditText Variables
+    EditText FirstName = (EditText) findViewById(R.id.et_FName);
+    EditText LastName = (EditText) findViewById(R.id.et_LName);
+    EditText PhoneNumber = (EditText) findViewById(R.id.et_PhNumber);
+
     //Creates Back Button - Clear EditText fields & go back to MainActivity
     Button btn_Cancel;
 
@@ -108,6 +113,26 @@ public class RegActivity extends MainActivity{
             startActivity(RegConfirm);
 
         }
+    }
+
+    //Add customer info to the List and [add code] that sends a text to user
+
+    protected void addInfo(){
+        //Convert EditText Variables to String
+        String str_FN = FirstName.getText().toString();
+        String str_LN = LastName.getText().toString();
+        String str_PHN = PhoneNumber.getText().toString();
+
+
+        //Complete submission code
+        //Adds info (FN & LN to ListView
+        CustomerList.add(str_FN+" "+str_LN);
+
+        //Have adapter update with newly made changes
+        adapter.notifyDataSetChanged();
+
+        //***ADD TWILIO CODE***
+
 
     }
 
