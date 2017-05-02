@@ -22,6 +22,17 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="15dp" />
 
+    <ImageView
+        android:id="@+id/queued_logo"
+        android:layout_width="343dp"
+        android:layout_height="239dp"
+        android:src="@drawable/queued"
+        tools:layout_editor_absoluteX="21dp"
+        tools:layout_editor_absoluteY="43dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp" />
+
     <Button
         android:id="@+id/btn_register"
         android:layout_width="wrap_content"
@@ -45,15 +56,4 @@
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/queued_logo"
         android:onClick="ViewQueue"/>
-
-    <ImageView
-        android:id="@+id/queued_logo"
-        android:layout_width="343dp"
-        android:layout_height="239dp"
-        android:src="@drawable/queued"
-        tools:layout_editor_absoluteX="21dp"
-        tools:layout_editor_absoluteY="43dp"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp" />
 </RelativeLayout>

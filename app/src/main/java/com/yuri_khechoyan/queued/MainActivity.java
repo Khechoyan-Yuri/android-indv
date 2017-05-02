@@ -12,13 +12,15 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import static com.yuri_khechoyan.queued.R.layout.activity_reg;
+
 
 //*********TO-DO LIST********************
 
 // ---NEEDS FIXING---
 
-// Error - NullPointerException: at com.yuri_khechoyan.queued.QueueActivity.btn_Back(QueueActivity.java:18)
-// Error - NullPointerException: at com.yuri_khechoyan.queued.MainActivity.onCreate(MainActivity.java:69)
+//-Save Info from Registration to QueueActivity
+//-Send text out for Registration Confirmation (to users' phone)
 
 
 // --- FIXED ---
@@ -36,22 +38,11 @@ public class MainActivity extends AppCompatActivity {
 
     //Button btn_Clear_Cancel;
 
-    //These boolean values will be used to help identify if application
-    //can confirm Registration=
-    boolean FNE_confirm_submission;
-    boolean LNE_confirm_submission;
-    boolean PHE_confirm_submission;
 
-
-
-    //Initialize ListView object
-    ListView lv;
-
-    //Initialize ArrayList Object
-    ArrayList<String> CustomerList;
-
-    //Initialize ArrayAdapter Object
-    ArrayAdapter<String> adapter;
+    //Initialize EditText Variables
+   // EditText FirstName = (EditText) findViewById(R.id.et_FName);
+   // EditText LastName = (EditText) findViewById(R.id.et_LName);
+   // EditText PhoneNumber = (EditText) findViewById(R.id.et_PhNumber);
 
 
     @Override
@@ -60,21 +51,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //New Customer Registration Method Call
-        customerReg();
+        //customerReg();
         //View Queue Method Call
-        ViewQueue();
+        //ViewQueue();
 
+        /*
         //Retrieve btn_Back Method Call from QueueActivity Class - Call method in onCreate
-        QueueActivity VQ = new QueueActivity();
-        VQ.Back();
+        QueueActivity back_To_Main = new QueueActivity();
+        back_To_Main.Back();
+        */
 
-        //Retrieve learCancel Method Call from RegActivity Class - Call method in onCreate
+        /*
+        //Retrieve ClearCancel Method Call from RegActivity Class - Call method in onCreate
         RegActivity CC = new RegActivity();
         CC.ClearCancel();
+        */
 
+        /*
         //Retrieve customer_ConfirmReg Method Call from RegActivity Class - Call method in onCreate
         RegActivity CR = new RegActivity();
         CR.customer_ConfirmReg();
+        */
 
 
 
@@ -82,24 +79,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Method called when "Register' Button is pressed
-    protected void customerReg(){
+    protected void customerReg(View v1){
         //Assigns Register Button to xml element
         btn_Register = (Button) findViewById(R.id.btn_register) ;
 
+        //Create Intent to launch from MainActivity to RegActivity
+        Intent RegIntent = new Intent(MainActivity.this,RegActivity.class);
+        startActivity(RegIntent);
+
         //Create Intent to launch the Registration Page (RegActivity)
-        Intent Register = new Intent ("com.yuri_khechoyan.queued.RegActivity");
-        startActivity(Register);
+        //Intent Register = new Intent ("com.yuri_khechoyan.queued.RegActivity");
+        //startActivity(Register);
     }
 
 
     //Method called when the 'View Queue' Button is pressed
-    protected void ViewQueue(){
+    protected void ViewQueue(View v2){
         //Assigns Register Button to xml element
         btn_ViewQueue = (Button) findViewById(R.id.btn_View);
 
-        //Create Intent to launch the Registration Page (RegActivity)
-        Intent View = new Intent ("com.yuri_khechoyan.queued.QueueActivity");
-        startActivity(View);
+        //Create Intent to launch from MainActivity to QueueActivity
+        Intent ViewIntent = new Intent(MainActivity.this,QueueActivity.class);
+        startActivity(ViewIntent);
     }
 }
 

@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yuri_khechoyan.queued">
 
-    <!-- USES INTERNET PERMISSION-->
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- USES INTERNET PERMISSION -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -23,7 +23,8 @@
         </activity>
 
         <!-- RegActivity -->
-        <activity android:name=".RegActivity"
+        <activity
+            android:name=".RegActivity"
             android:label="qu·eu·ed - Register">
             <intent-filter>
                 <action android:name="com.yuri_khechoyan.queued.RegActivity" />
@@ -33,7 +34,8 @@
         </activity>
 
         <!-- QueueActivity -->
-        <activity android:name=".QueueActivity"
+        <activity
+            android:name=".QueueActivity"
             android:label="qu·eu·ed - View Queue">
             <intent-filter>
                 <action android:name="com.yuri_khechoyan.queued.QueueActivity" />
@@ -41,6 +43,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".Main2Activity"></activity>
     </application>
+
 </manifest>

@@ -1,5 +1,7 @@
 package com.yuri_khechoyan.queued;
 
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -16,42 +18,73 @@ import java.util.ArrayList;
 
 public class RegActivity extends MainActivity{
 
+    //These boolean values will be used to help identify if application
+    //can confirm Registration=
+    boolean FNE_confirm_submission;
+    boolean LNE_confirm_submission;
+    boolean PHE_confirm_submission;
+
     //Initialize EditText Variables
-    EditText FirstName = (EditText) findViewById(R.id.et_FName);
-    EditText LastName = (EditText) findViewById(R.id.et_LName);
-    EditText PhoneNumber = (EditText) findViewById(R.id.et_PhNumber);
+    EditText FirstName;
+    EditText LastName;
+    EditText PhoneNumber;
 
     //Creates Back Button - Clear EditText fields & go back to MainActivity
     Button btn_Cancel;
 
-    //Method for clearing all EditText Fields from activity_reg and go back to the Main Menu screen
-    protected void ClearCancel(){
+    //Creates Confirmation Registration Button - Go from activity_reg to MainActivity
+    Button btn_RegConfirm;
+
+    //Create ListView Object
+    ListView lv;
+
+    //Initialize ArrayList Object
+    ArrayList<String> CustomerList;
+
+    //Initialize ArrayAdapter Object
+    ArrayAdapter<String> adapter;
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_reg);
+
+        FirstName = (EditText) findViewById(R.id.et_FName);
+        LastName = (EditText) findViewById(R.id.et_LName);
+        PhoneNumber = (EditText) findViewById(R.id.et_PhNumber);
+
         //Assigns Register Button to xml element
         btn_Cancel = (Button) findViewById(R.id.btn_ClearFields);
 
+        //Assigns Confirm Registration Button to xml element
+        btn_RegConfirm = (Button) findViewById(R.id.btn_RegConfirm);
+
+        //Connect ListView object to a layout element
+        lv = (ListView) findViewById(R.id.listView);
+    }
+
+    //Method for clearing all EditText Fields from activity_reg and go back to the Main Menu screen
+    protected void ClearCancel(View v3){
 
         //Delete Text Fields to null
         //when Clear button is pressed
-        if(!FirstName.getText().equals("") || !LastName.getText().equals("") || !PhoneNumber.getText().equals("")){
+        if(!FirstName.getText().toString().equals("") || !LastName.getText().toString().equals("")
+                || !PhoneNumber.getText().toString().equals("")){
             //Setting Values back to null - Removing any un-removed, previous entries
             FirstName.setText("");
             LastName.setText("");
             PhoneNumber.setText("");
         }
 
-        //Create Intent to launch the Registration Page (RegActivity)
-        Intent Cancel = new Intent ("com.yuri_khechoyan.queued.MainActivity");
-        startActivity(Cancel);
+        //Create Intent to launch the go from RegActivity to MainActivity
+        Intent CancelIntent = new Intent(RegActivity.this,MainActivity.class);
+        startActivity(CancelIntent);
     }
 
-    //Creates Confirmation Registration Button - Go from activity_reg to MainActivity
-    //line 104
-    Button btn_RegConfirm;
-
     //Method called when 'Confirm Registration' Button is pressed
-    protected void customer_ConfirmReg() {
-        //Connect ListView object to a layout element
-        lv = (ListView) findViewById(R.id.listView);
+    protected void customer_ConfirmReg(View v4) {
 
         //Calls ArrayList Class
         CustomerList = new ArrayList<String>();
@@ -59,9 +92,6 @@ public class RegActivity extends MainActivity{
         //Calls ArrayAdapter Class
         adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,
                 CustomerList);
-
-        //Assigns ListView to adapter Class
-        lv.setAdapter(adapter);
 
 
         //--------------------------------------------------------------------------
@@ -105,12 +135,9 @@ public class RegActivity extends MainActivity{
         else {
             addInfo();
 
-            //Assigns Confirm Registration Button to xml element
-            btn_RegConfirm = (Button) findViewById(R.id.btn_RegConfirm) ;
-
-            //Create Intent to launch the Registration Page (RegActivity)
-            Intent RegConfirm = new Intent ("com.yuri_khechoyan.queued.MainActivity");
-            startActivity(RegConfirm);
+            //Create Intent to launch from MainActivity to RegActivity
+            Intent RegConfirmIntent = new Intent(RegActivity.this,MainActivity.class);
+            startActivity(RegConfirmIntent);
 
         }
     }
@@ -131,10 +158,13 @@ public class RegActivity extends MainActivity{
         //Have adapter update with newly made changes
         adapter.notifyDataSetChanged();
 
+        Toast.makeText(this, "Registration Complete!", Toast.LENGTH_SHORT).show();
+
         //***ADD TWILIO CODE***
 
 
     }
+
 
     //*******USE THIS CODE FOR TWILIO & ADDING NAMES TO LIST********
 
@@ -159,5 +189,3 @@ Installation failed with message Invalid File: D:\CIS\CIS 472 - Android Dev\HWs\
         Do you want to uninstall the existing application?
 
 */
-
-

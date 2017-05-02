@@ -42,12 +42,12 @@
         android:layout_marginEnd="36dp" />
 
     <Button
-        android:id="@+id/btn_Back_Main"
+        android:id="@+id/btn_BackToMainMenu"
+        android:text="Back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back"
-        android:onClick="Back"
         android:layout_marginStart="29dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="Back"/>
 </RelativeLayout>
